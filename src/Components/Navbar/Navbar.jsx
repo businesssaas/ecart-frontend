@@ -3,9 +3,19 @@ import './Navbar.css'
 import logo from '../Assets/logo.png'
 import cart_icon from '../Assets/cart_icon.png'
 import { Link } from "react-router-dom"
+import { useContext } from "react"
+import { ShopContext } from "../../Context"
 
 const Navbar = () => {
     const [menu, setmenu] = useState("shop");
+    const { cartItems } = useContext(ShopContext)
+    const getNoOfItemInCart = (cartItems) => {
+        let cartCount = 0;
+        Object.keys(cartItems).forEach(key=>{
+            cartCount+=cartItems[key];
+        })
+        return cartCount
+    }
     return (
         <div className='navbar'>
             <div className="nav-logo">
@@ -21,7 +31,7 @@ const Navbar = () => {
             <div className="nav-login-cart">
                 <Link to='/login'><button>Login</button></Link>
                 <Link to='/cart'><img src={cart_icon} alt="" /></Link>
-                <div className="nav-cart-count">0</div>
+                <div className="nav-cart-count">{getNoOfItemInCart(cartItems)}</div>
 
 
             </div>

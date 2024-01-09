@@ -9,9 +9,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ShopContextProvider>
-    <App />
+      <App />
     </ShopContextProvider>
-    
+
   </React.StrictMode>
 );
 
